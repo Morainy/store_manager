@@ -95,9 +95,6 @@
                ?>
         </tbody>
     </table>
-    <?php
-        echo "arr=" . json_encode($arr)
-    ?>
     <div class="panel-page">
         <div class="panel-pagination">
         </div>
@@ -119,7 +116,8 @@
 	</div>
 	<script>
 		window.servData = {
-			total: <?php echo $total ?>
+			total: <?php echo $total ?>,
+			list: <?php echo json_encode($arr) ?>
 		}
 	</script>
     <script src="lib/jquery-3.4.1.min.js"></script>

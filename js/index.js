@@ -1,5 +1,6 @@
 ;(function(win){
     var servData = win.servData || {}
+    var list = servData.list || []
     var totalCount = servData.total || 0
     var page = getUrlParamVal('page') || 0
     var size = getUrlParamVal('size') || 10
@@ -8,7 +9,11 @@
     var $pageSize = $('.page-dropdown')
 
     function openPage(page, size) {
-        openUrl('index.php?page=' + page + '&size=' + size)
+        var selectData = getSelect()
+        setPrintData(selectData)
+        setTimeout(function() {
+            openUrl('index.php?page=' + page + '&size=' + size)
+        }, 300)
     }
 
     function rendPageSize (size) {
@@ -36,6 +41,16 @@
         if (totalCount === 0) {
             $('.panel-page').hide()
         }
+    }
+
+    function getSelect() {
+        var arr = []
+        $('.panel-table tr :checkbox').each(function(index, el) {
+            if (el.checked && list[index]) {
+                arr.push(list[index])
+            }
+        })
+        return arr
     }
     
     function main () {

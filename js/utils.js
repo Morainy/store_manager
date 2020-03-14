@@ -16,3 +16,15 @@ function getUrlParamVal(name, queryString) {
 function openUrl(url) {
     window.location.href = url
 }
+
+const KEY_LIST = 'store_print_list'
+
+function getPrintData () {
+    if (!window.localStorage) return null;
+        
+    return window.localStorage.getItem(KEY_LIST)
+}
+
+function setPrintData (list) {
+    window.localStorage && window.localStorage.setItem(KEY_LIST, JSON.stringify(list))
+}
