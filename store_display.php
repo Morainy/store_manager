@@ -30,7 +30,7 @@
 	$conn->set_charset("utf8");
 
 
-	$sql = "SELECT COUNT(*) AS total FROM ". $STORE_TABLE;
+	$sql = "SELECT COUNT(*) AS total FROM ". $STORE_TABLE ;
         
     //4.执行SQL语句
     $result = $conn->query($sql);
@@ -38,9 +38,9 @@
     $total = $row[0];
 
     //新建分页类的对象
-    $page = new Page($total,4,"",true);
+    $page = new Page($total, 10,"",true);
 
-	$sql = "SELECT * FROM " . $STORE_TABLE . " ". $page->limit;
+	$sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". $page->limit;
 	$result = $conn->query($sql);
 	if($result == false) {
 		echo "DB 查询失败";
@@ -61,6 +61,6 @@
    ?>
    </tbody>
 </table>
-
+	<a href="store_manager.html" class="button">新增单据</a>
 </body>
 </html>

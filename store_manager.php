@@ -10,11 +10,10 @@
 			. $_POST["product_name"] . "','" . $_POST["specs"] . "','"
 			. $_POST["quantity"] . "','" . $_POST["in_price"] . "','"
 			. $_POST["out_price"] . "','" . $_POST["memo"] . "')";
-	echo "sql:" . $sql ."<br/>";
     $result = $conn->query($sql);
 	if($result == false){
-        echo "<script charset='utf-8'>alert('录入失败');</script>";
+        echo "<script charset='utf-8'>alert('录入失败');window.location.href = 'store_display.php';</script>";
     } else {
-    	echo "<script charset='utf-8'>alert('录入成功');</script>";
+    	echo "<script charset='utf-8'>alert('录入成功');window.location.href = 'store_display.php'</script>";
     }
 ?>
