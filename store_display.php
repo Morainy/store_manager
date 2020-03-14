@@ -61,6 +61,8 @@
    ?>
    </tbody>
 </table>
-	<a href="store_manager.html" class="button">新增单据</a>
+	<a href="store_manager.html">
+		<button btn btn-primary style="display:block;margin:0 auto">新增单据</button>
+	</a>
 </body>
 </html>
