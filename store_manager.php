@@ -12,8 +12,8 @@
 			. $_POST["out_price"] . "','" . $_POST["memo"] . "')";
     $result = $conn->query($sql);
 	if($result == false){
-        echo "<script charset='utf-8'>alert('录入失败');window.location.href = 'store_display.php';</script>";
+        echo "<script charset='utf-8'>alert('录入失败');window.location.href = 'index.php';</script>";
     } else {
-    	echo "<script charset='utf-8'>alert('录入成功');window.location.href = 'store_display.php'</script>";
+    	echo "<script charset='utf-8'>alert('录入成功');window.location.href = 'index.php'</script>";
     }
 ?>
