@@ -44,6 +44,48 @@
             </tr>
         </thead>
         <tbody>
+            <?php
+                include("global.php");
+                include("page.class.php");
+                $conn = new mysqli($SERVER, $USERNAME, $PASSWD, $DBNAME, $PORT);
+                $conn->set_charset("utf8");
+
+
+                $sql = "SELECT COUNT(*) AS total FROM ". $STORE_TABLE ;
+                    
+                //4.执行SQL语句
+                $result = $conn->query($sql);
+                $row = $result->fetch_row();
+                $total = $row[0];
+
+                //新建分页类的对象
+                if(empty($_GET["page_num"])){
+                    $page_num = 10;
+                } else {
+                    $page_num = $_GET["page_num"];
+                }
+                
+                $page = new Page($total, $page_num,"",true);
+                $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". $page->limit;
+                $result = $conn->query($sql);
+                if($result == false) {
+                    echo "DB 查询失败";
+                }
+                while(!!$row = mysqli_fetch_array($result)){
+                    echo "<tr><td>".$row["product_type"]
+                        ."</td><td>".$row["brand"]
+                        ."</td><td>".$row["product_name"]
+                        ."</td><td>".$row["specs"]
+                        ."</td><td>".$row["quantity"]
+                        ."</td><td>".$row["in_price"]
+                        ."</td><td>".$row["out_price"]
+                        ."</td><td>".$row["memo"]
+                        ."</td><td>".$row["ctime"]
+                        ."</td><td>";
+                    echo "<input type='checkbox'  value='check'> </td><tr>";
+                }
+                echo "<tr><td colspan='9'>".$page->fpage()."</td></tr>";
+               ?>
         </tbody>
     </table>
     <div class="panel-page">
