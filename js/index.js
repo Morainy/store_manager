@@ -8,7 +8,7 @@
     var $pageSize = $('.page-dropdown')
 
     function openPage(page, size) {
-        openUrl('index.html?page=' + page + '&size=' + size)
+        openUrl('index.php?page=' + page + '&size=' + size)
     }
 
     function rendPageSize (size) {

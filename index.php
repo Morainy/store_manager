@@ -46,7 +46,6 @@
         <tbody>
             <?php
                 include("global.php");
-                include("page.class.php");
                 $conn = new mysqli($SERVER, $USERNAME, $PASSWD, $DBNAME, $PORT);
                 $conn->set_charset("utf8");
 
@@ -58,13 +57,19 @@
                 $total = $row[0];
 
                 //新建分页类的对象
-                if(empty($_GET["page_num"])){
+                if(empty($_GET["size"])){
                     $page_num = 10;
                 } else {
-                    $page_num = $_GET["page_num"];
+                    $page_num = $_GET["size"];
+                }
+                if(empty($_GET["page"])) {
+                	$offset = 0;
+                } else {
+                	$offset = $_GET["page"] * $page_num;
                 }
                 
-                $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". $page->limit;
+                $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". 
+                	"LIMIT " . $offset . "," . $page_num;
                 $result = $conn->query($sql);
                 if($result == false) {
                     echo "DB 查询失败";
@@ -105,7 +110,7 @@
 	</div>
 	<script>
 		window.servData = {
-			total: <?php echo 100 ?>
+			total: <?php echo $total ?>
 		}
 	</script>
     <script src="lib/jquery-3.4.1.min.js"></script>
