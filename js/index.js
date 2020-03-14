@@ -9,10 +9,14 @@
     var $pageSize = $('.page-dropdown')
 
     function openPage(page, size) {
+        openUrl('index.php?page=' + page + '&size=' + size)
+    }
+
+    function openToken() {
         var selectData = getSelect()
         setPrintData(selectData)
         setTimeout(function() {
-            openUrl('index.php?page=' + page + '&size=' + size)
+            openUrl('token.html')
         }, 300)
     }
 
@@ -32,6 +36,14 @@
 
         $pageSize.on('click', '.dropdown-menu li', function() {
             openPage(page, $(this).data('size'))
+        })
+
+        $('.go-token').on('click', function() {
+            if ($('.panel-table tr :checkbox:checked').length === 0) {
+                alert('还未选中任何数据！')
+                return
+            }
+            openToken()
         })
     }
 
