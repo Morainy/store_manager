@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8"> 
     <title>仓库</title>
-    <link rel="stylesheet" href="lib/reset.css">
     <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <style>
         .panel-page {
@@ -25,9 +24,13 @@
             display: flex;
             justify-content: center;
         }
+        .title {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <legend class="title">鄢陵县弘欣农资有限公司仓储管理系统</legend>
     <table class="table panel-table">
         <thead>
             <tr>
@@ -74,6 +77,7 @@
                 if($result == false) {
                     echo "DB 查询失败";
                 }
+                $arr = array();
                 while(!!$row = mysqli_fetch_array($result)){
                     echo "<tr><td>".$row["product_type"]
                         ."</td><td>".$row["brand"]
@@ -85,11 +89,15 @@
                         ."</td><td>".$row["memo"]
                         ."</td><td>".$row["ctime"]
                         ."</td><td>";
-                    echo "<input type='checkbox'  value='check'> </td><tr>";
+                    array_push($arr, $row);
+                    echo "<label><input type='checkbox'></label> </td><tr>";
                 }
                ?>
         </tbody>
     </table>
+    <?php
+        echo "arr=" . json_encode($arr)
+    ?>
     <div class="panel-page">
         <div class="panel-pagination">
         </div>
@@ -102,6 +110,7 @@
                 <li data-size="10"><a href="#">10条</a></li>
                 <li data-size="20"><a href="#">20条</a></li>
                 <li data-size="50"><a href="#">50条</a></li>
+                <li data-size="100"><a href="#">100条</a></li>
             </ul>
         </div>
     </div>
