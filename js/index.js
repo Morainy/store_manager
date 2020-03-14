@@ -1,6 +1,9 @@
-;(function(){
+;(function(win){
+    var servData = win.servData || {}
+    var totalCount = servData.total || 0
     var page = getUrlParamVal('page') || 0
     var size = getUrlParamVal('size') || 10
+    var total = Math.ceil(totalCount / size)
 
     var $pageSize = $('.page-dropdown')
 
@@ -17,7 +20,7 @@
         $('.panel-pagination').pagination({
             page: +page,
             size: +size,
-            total: 1000
+            total: total
         }).on('page', function(event, data) {
             openPage(data.page, size)
         })
@@ -27,6 +30,18 @@
         })
     }
 
-    rendPageSize(size)
-    bind()
-})()
+    function rendPage() {
+        rendPageSize(size)
+
+        if (totalCount === 0) {
+            $('.panel-page').hide()
+        }
+    }
+    
+    function main () {
+        rendPage()
+        bind()
+    }
+    
+    main()
+})(window)
