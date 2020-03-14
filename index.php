@@ -20,6 +20,7 @@
          <th>售价</th>
          <th>备注</th>
          <th>创建时间</th>
+         <th>是否打印票据</th>
       </tr>
    </thead>
    <tbody>
@@ -38,8 +39,13 @@
     $total = $row[0];
 
     //新建分页类的对象
-    $page = new Page($total, 10,"",true);
-
+    if(empty($_GET["page_num"])){
+    	$page_num = 10;
+    } else {
+    	$page_num = $_GET["page_num"];
+    }
+    
+    $page = new Page($total, $page_num,"",true);
 	$sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". $page->limit;
 	$result = $conn->query($sql);
 	if($result == false) {
@@ -55,7 +61,8 @@
 			."</td><td>".$row["out_price"]
 			."</td><td>".$row["memo"]
 			."</td><td>".$row["ctime"]
-			."</td><tr>";
+			."</td><td>";
+		echo "<input type='checkbox'  value='check'> </td><tr>";
 	}
 	echo "<tr><td colspan='9'>".$page->fpage()."</td></tr>";
    ?>
