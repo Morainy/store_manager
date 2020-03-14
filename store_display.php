@@ -25,9 +25,22 @@
    <tbody>
    <?php
    	include("global.php");
+   	include("page.class.php");
    	$conn = new mysqli($SERVER, $USERNAME, $PASSWD, $DBNAME, $PORT);
 	$conn->set_charset("utf8");
-	$sql = "SELECT * FROM " . $STORE_TABLE;
+
+
+	$sql = "SELECT COUNT(*) AS total FROM ". $STORE_TABLE;
+        
+    //4.执行SQL语句
+    $result = $conn->query($sql);
+    $row = $result->fetch_row();
+    $total = $row[0];
+
+    //新建分页类的对象
+    $page = new Page($total,4,"",true);
+
+	$sql = "SELECT * FROM " . $STORE_TABLE . " ". $page->limit;
 	$result = $conn->query($sql);
 	if($result == false) {
 		echo "DB 查询失败";
@@ -44,6 +57,7 @@
 			."</td><td>".$row["ctime"]
 			."</td><tr>";
 	}
+	echo "<tr><td colspan='9'>".$page->fpage()."</td></tr>";
    ?>
    </tbody>
 </table>
