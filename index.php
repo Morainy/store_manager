@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8"> 
 	<title>仓库</title>
-	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	
 </head>
 <body>
 
@@ -68,10 +68,12 @@
    ?>
    </tbody>
 </table>
-	<div style="text-align:center">
-		<a style="display:inline-block" href="store_manager.html">
-			<button btn btn-primary style="display:block;margin:0 auto">新增单据</button>
-		</a>
-	</div>
+<div class="pagination"></div>
+	<a href="store_manager.html">
+		<button btn btn-primary style="display:block;margin:0 auto">新增单据</button>
+	</a>
+	<script src="lib/jquery-3.4.1.min.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>
