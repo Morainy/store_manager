@@ -62,6 +62,8 @@
                 arr.push(list[index])
             }
         })
+        // console.log("arr:" + arr)
+        // debugger;
         return arr
     }
     

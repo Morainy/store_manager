@@ -41,6 +41,7 @@
                 <th>数量</th>
                 <th>进价</th>
                 <th>售价</th>
+                <th>客户方</th>
                 <th>备注</th>
                 <th>创建时间</th>
                 <th>是否打印票据</th>
@@ -86,6 +87,7 @@
                         ."</td><td>".$row["quantity"]
                         ."</td><td>".$row["in_price"]
                         ."</td><td>".$row["out_price"]
+                        ."</td><td>".$row["buyer"]
                         ."</td><td>".$row["memo"]
                         ."</td><td>".$row["ctime"]
                         ."</td><td>";

@@ -48,6 +48,7 @@
                 if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
             return fmt;
         }
+        var select_data = eval(getPrintData());
         const canvas = document.getElementById('canvas');
         let ctx = canvas.getContext('2d');
 
@@ -75,25 +76,17 @@
         const drawTable = () => {
             const headArr = [8, 100, 500, 600, 726]
             const headTxtArr = [
-                ['销售方', '鄢陵县弘欣农业发展有限公司', '电话', ' '],
-                ['客户名称', ' ', '电话', '']
+                ['销售方', '鄢陵县弘欣农业发展有限公司', '电话', ' ']
             ]
-            const titleArr = [8, 100, 180, 400, 450, 500, 550, 600, 726];
+            const titleArr = [8, 30, 100, 180, 300, 400, 450, 500, 550, 600, 726];
             const titleTxtArr = [
-                ['产品类型', '品牌', '产品名称', '规格', '数量', '单价', '金额','备注']
+                ['id','产品类型', '品牌', '产品名称', '规格', '数量', '单价', '金额','客户方','备注']
             ]
-            const goodsTxtArr = [
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', ''],
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', ''],
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', ''],
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', ''],
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', ''],
-                ['商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '商品名称', '']
-            ]
+            const goodsTxtArr = select_data;
 
-            drawLine(headArr, headTxtArr, 62, 726, 2)
-            drawLine(titleArr, titleTxtArr, 123, 726, 1, 16)
-            drawLine(titleArr, goodsTxtArr, 154, 726, goodsTxtArr.length, 16, true)
+            drawLine(headArr, headTxtArr, 62, 726, 1)
+            drawLine(titleArr, titleTxtArr, 93, 726, 1, 16)
+            drawLine(titleArr, goodsTxtArr, 124, 726, goodsTxtArr.length, 16, true)
         }
 
         /**
@@ -109,7 +102,7 @@
         const drawLine = (list, tlist, startHei, lineWidth, n, txtHei = 14, isTrue = false) => {
             for (let i = 0; i < n; i++) {
                 for (let y in list) {
-                    if (y !== 0) {
+                    if (y != 0) {
                         const poi = list[y] - (list[y] - list[y - 1]) / 2;
                         writeTxt(tlist[i][y - 1], '12px', [poi, startHei + txtHei + 30 * i])
                     }
@@ -147,7 +140,7 @@
         }
 
         writeTxt('出货单', '20px', [370, 20])
-        writeTxt('公司代码:1232313131', '12px', [12, 48], 'left')
+        // writeTxt('公司代码:1232313131', '12px', [12, 48], 'left')
         var str_today = new Date().format("yyyy-MM-dd hh:mm:ss");
         writeTxt('时间：' + str_today, '12px', [698, 48], 'right')
         drawTable()
