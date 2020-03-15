@@ -1,5 +1,16 @@
-$("select option").click(function(){
-    var id = $(this).attr("value");
-     $("div").hide();//把之前显示的先隐藏
-    $("#"+id+"").show();
-});
+;(function(win) {
+    var $contentIn = $('.content-in')
+    var $contentOut = $('.content-out')
+
+    $("[name=record_type]").on('change', function(){
+        var type = +$(this).val()
+        
+        if (type === 1) {
+            $contentIn.show()
+            $contentOut.hide()
+        } else {
+            $contentOut.show()
+            $contentIn.hide()
+        }
+    });
+})(window)

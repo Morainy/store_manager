@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <title>单据管理</title>
-    <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>单据管理</title>
+	<link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 	<style>
 		.store-form {
 			width: 475px;
 			margin: 0 auto;
 		}
+
 		.title {
 			text-align: center;
 		}
 	</style>
 </head>
+
 <body>
 	<legend class="title">新增单据</legend>
 	<form class="form-horizontal store-form" action="store_manager.php" method="POST">
 		<div class="form-group">
 			<label for="product_type" class="col-sm-4 control-label">产品类型：</label>
 			<div class="col-sm-8">
-			<input type="text" class="form-control" name="product_type" id="product_type" placeholder="">
+				<input type="text" class="form-control" name="product_type" id="product_type" placeholder="">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="brand" class="col-sm-4 control-label">品牌：</label>
 			<div class="col-sm-8">
-			<input type="text" class="form-control" id="brand" name="brand" placeholder="">
+				<input type="text" class="form-control" id="brand" name="brand" placeholder="">
 			</div>
 		</div>
 		<div class="form-group">
@@ -34,63 +37,66 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" id="product_name" name="product_name" placeholder="">
 			</div>
-			</div>
-			<div class="form-group">
+		</div>
+		<div class="form-group">
 			<label for="specs" class="col-sm-4 control-label">规格：</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" id="specs" name="specs" placeholder="">
 			</div>
-			</div>
-			<div class="form-group">
+		</div>
+		<div class="form-group">
 			<label for="quantity" class="col-sm-4 control-label">数量：</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" id="quantity" name="quantity" placeholder="">
 			</div>
-
-			<div class="form-group">
+		</div>
+		<div class="form-group">
 			<label for="record_type" class="col-sm-4 control-label">出/入库：</label>
 			<div class="col-sm-8">
-				<select class="form-control" name="record_type" onclick="">
+				<select class="form-control" name="record_type">
 					<option value="1">入库</option>
 					<option value="2">出库</option>
 				</select>
 			</div>
-			</div>
-			<div id ="1" class="form-group">
+		</div>
+		<div class="content-in">
+			<div class="form-group">
 				<label for="in_price" class="col-sm-4 control-label">进价：</label>
 				<div class="col-sm-8">
 					<input type="number" class="form-control" id="in_price" name="in_price" placeholder="">
 				</div>
 			</div>
-			<div id = "2">
-				<div class="form-group">
-					<label for="out_price" class="col-sm-4 control-label">售价：</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="out_price" name="out_price" placeholder="">
-					</div>
-					<div class="form-group">
-						<label for="buyer" class="col-sm-4 control-label">客户方：</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="buyer" name="buyer" placeholder="">
-						</div>
-					</div>
+		</div>
+		<div class="content-out" style="display: none;">
+			<div class="form-group">
+				<label for="out_price" class="col-sm-4 control-label">售价：</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="out_price" name="out_price" placeholder="">
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="buyer" class="col-sm-4 control-label">客户方：</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="buyer" name="buyer" placeholder="">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="memo" class="col-sm-4 control-label">备注：</label>
 			<div class="col-sm-8">
 				<textarea class="form-control" id="memo" name="memo" placeholder="" rows="3"></textarea>
 			</div>
-			</div>
+		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-default">提交</button>
+				<button type="submit" class="btn btn-default">提交</button>
 			</div>
 		</div>
-		</form>
+	</form>
 	<script src="lib/bootstrap-3.3.7-dist/js/jquery.min.js"></script>
-    <script src="lib/bootstrap-3.3.7-dist/js/popper.min.js"></script>
+	<script src="lib/bootstrap-3.3.7-dist/js/popper.min.js"></script>
 	<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="js/store_manager.js"></script>
 </body>
+
 </html>
