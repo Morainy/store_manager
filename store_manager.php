@@ -9,11 +9,14 @@
 			. $_POST["product_type"] . "','" . $_POST["brand"] . "','"
 			. $_POST["product_name"] . "','" . $_POST["specs"] . "','"
 			. $_POST["quantity"] . "','" . $_POST["in_price"] . "','"
-			. $_POST["out_price"] . "','". $_POST["buyer"] . "','" . $_POST["memo"] . "')";
+			. $_POST["out_price"] . "','". $_POST["buyer"] . "','" 
+			. $_POST["memo"] . "')";
     $result = $conn->query($sql);
 	if($result == false){
+		// echo "录入失败". $sql;
         echo "<script charset='utf-8'>alert('录入失败');window.location.href = 'index.php';</script>";
     } else {
+    	// echo "录入成功". $sql;
     	echo "<script charset='utf-8'>alert('录入成功');window.location.href = 'index.php'</script>";
     }
 ?>
