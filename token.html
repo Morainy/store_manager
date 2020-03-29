@@ -24,7 +24,6 @@
     <canvas id="canvas" width="740" height="500"></canvas>
     <script src="js/utils.js"></script>
     <script>
-        console.log(getPrintData())
         /**
          *对Date的扩展，将 Date 转化为指定格式的String
          *月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
@@ -49,8 +48,28 @@
             return fmt;
         }
         var select_data = eval(getPrintData());
+        var goodsTxtArr = new Array();
+        for (var index = 0; index < select_data.length; index++) {
+            var tmp_arr = new Array();
+            tmp_arr[0] = index;
+            tmp_arr[1] = select_data[index]["product_type"];
+            tmp_arr[2] = select_data[index]["brand"];
+            tmp_arr[3] = select_data[index]["product_name"];
+            tmp_arr[4] = select_data[index]["specs"];
+            tmp_arr[5] = select_data[index]["quantity"];
+            tmp_arr[6] = select_data[index]["out_price"];
+            tmp_arr[7] = select_data[index]["quantity"] * select_data[index]["out_price"];
+            tmp_arr[8] = select_data[index]["buyer"];
+            tmp_arr[9] = select_data[index]["memo"];
+            goodsTxtArr.push(tmp_arr);
+        }
+        // console.log(goodsTxtArr)
         const canvas = document.getElementById('canvas');
         let ctx = canvas.getContext('2d');
+        ctx.mozImageSmoothingEnabled = false;
+        ctx.webkitImageSmoothingEnabled = false;
+        ctx.msImageSmoothingEnabled = false;
+        ctx.imageSmoothingEnabled = false;
 
         /**
          * @writeTxt: canvas 写入字内容
@@ -76,13 +95,12 @@
         const drawTable = () => {
             const headArr = [8, 100, 500, 600, 726]
             const headTxtArr = [
-                ['销售方', '鄢陵县弘欣农业发展有限公司', '电话', ' ']
+                ['销售方', '鄢陵县弘欣农业发展有限公司', '电话', '13298202788']
             ]
             const titleArr = [8, 30, 100, 180, 300, 400, 450, 500, 550, 600, 726];
             const titleTxtArr = [
-                ['id','产品类型', '品牌', '产品名称', '规格', '数量', '单价', '金额','客户方','备注']
+                ['序号','产品类型', '品牌', '生产厂家', '规格', '数量', '单价', '金额','客户方','备注']
             ]
-            const goodsTxtArr = select_data;
 
             drawLine(headArr, headTxtArr, 62, 726, 1)
             drawLine(titleArr, titleTxtArr, 93, 726, 1, 16)
@@ -139,12 +157,15 @@
             ctx.stroke();
         }
 
-        writeTxt('出货单', '20px', [370, 20])
-        // writeTxt('公司代码:1232313131', '12px', [12, 48], 'left')
+        writeTxt('出货单据', '20px', [370, 20])
         var str_today = new Date().format("yyyy-MM-dd hh:mm:ss");
         writeTxt('时间：' + str_today, '12px', [698, 48], 'right')
         drawTable()
-        writeTxt('收货方签字', '12px', [600, 480], 'right')
+        var sign_height = (goodsTxtArr.length + 1) * 30 + 124
+        writeTxt('客户电话:', '12px', [100, sign_height], 'right')
+        writeTxt('电话:', '12px', [500, sign_height], 'right')
+        sign_height += 30
+        writeTxt('客户签字:', '12px', [100, sign_height], 'right')
     </script>
 </body>
 

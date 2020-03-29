@@ -91,6 +91,7 @@
                         ."</td><td>".$row["memo"]
                         ."</td><td>".$row["ctime"]
                         ."</td><td>";
+                    // echo "row:" , print_r($row);
                     array_push($arr, $row);
                     echo "<label><input type='checkbox'></label> </td><tr>";
                 }
