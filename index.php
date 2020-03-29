@@ -42,6 +42,7 @@
                 <th>进价</th>
                 <th>售价</th>
                 <th>客户方</th>
+                <th>出/入库</th>
                 <th>备注</th>
                 <th>创建时间</th>
                 <th>是否打印票据</th>
@@ -80,18 +81,24 @@
                 }
                 $arr = array();
                 while(!!$row = mysqli_fetch_array($result)){
-                    echo "<tr><td>".$row["product_type"]
+                    $record = "<tr><td>".$row["product_type"]
                         ."</td><td>".$row["brand"]
                         ."</td><td>".$row["product_name"]
                         ."</td><td>".$row["specs"]
                         ."</td><td>".$row["quantity"]
                         ."</td><td>".$row["in_price"]
                         ."</td><td>".$row["out_price"]
-                        ."</td><td>".$row["buyer"]
+                        ."</td><td>".$row["buyer"];
+                        if($row["record_type"] == 1) {
+                            $record = $record . "</td><td>" . "入";
+                        } else {
+                             $record = $record . "</td><td>" . "出";
+                        }
+                        $record = $record
                         ."</td><td>".$row["memo"]
                         ."</td><td>".$row["ctime"]
                         ."</td><td>";
-                    // echo "row:" , print_r($row);
+                    echo $record;
                     array_push($arr, $row);
                     echo "<label><input type='checkbox'></label> </td><tr>";
                 }

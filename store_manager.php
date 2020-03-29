@@ -5,12 +5,12 @@
 	$conn = new mysqli($SERVER, $USERNAME, $PASSWD, $DBNAME, $PORT);
 	$conn->set_charset("utf8");
 	
-	$sql = "INSERT INTO " . $STORE_TABLE . " (product_type,brand,product_name,specs,quantity,in_price,out_price,buyer,memo) VALUES ('"
+	$sql = "INSERT INTO " . $STORE_TABLE . " (product_type,brand,product_name,specs,quantity,in_price,out_price,buyer,memo,record_type) VALUES ('"
 			. $_POST["product_type"] . "','" . $_POST["brand"] . "','"
 			. $_POST["product_name"] . "','" . $_POST["specs"] . "','"
 			. $_POST["quantity"] . "','" . $_POST["in_price"] . "','"
 			. $_POST["out_price"] . "','". $_POST["buyer"] . "','" 
-			. $_POST["memo"] . "')";
+			. $_POST["memo"] . "','" . $_POST["record_type"] . "')";
     $result = $conn->query($sql);
 	if($result == false){
 		// echo "录入失败". $sql;

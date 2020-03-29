@@ -51,7 +51,7 @@
         var goodsTxtArr = new Array();
         for (var index = 0; index < select_data.length; index++) {
             var tmp_arr = new Array();
-            tmp_arr[0] = index;
+            tmp_arr[0] = index + 1;
             tmp_arr[1] = select_data[index]["product_type"];
             tmp_arr[2] = select_data[index]["brand"];
             tmp_arr[3] = select_data[index]["product_name"];
@@ -162,7 +162,7 @@
         writeTxt('时间：' + str_today, '12px', [698, 48], 'right')
         drawTable()
         var sign_height = (goodsTxtArr.length + 1) * 30 + 124
-        writeTxt('客户电话:', '12px', [100, sign_height], 'right')
+        writeTxt('客户名称:', '12px', [100, sign_height], 'right')
         writeTxt('电话:', '12px', [500, sign_height], 'right')
         sign_height += 30
         writeTxt('客户签字:', '12px', [100, sign_height], 'right')
