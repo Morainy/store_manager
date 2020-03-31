@@ -20,9 +20,9 @@
             }
         })
     }
-
+    
     function render(data) {
-        console.log(data);
+        // console.log(data);
 
         var html = win.tmpl(template, {data});
         $('.my-table tbody').html(html);
