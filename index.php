@@ -73,10 +73,10 @@
                 	$offset = $_GET["page"] * $page_num;
                 }
                 
-                // $sql = "SELECT * FROM " . $STORE_TABLE . " WHERE status = '1' ORDER BY ctime DESC ". 
-                // 	"LIMIT " . $offset . "," . $page_num;
-                $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". 
-                 "LIMIT " . $offset . "," . $page_num;
+                $sql = "SELECT * FROM " . $STORE_TABLE . " WHERE status = '1' ORDER BY ctime DESC ". 
+                	"LIMIT " . $offset . "," . $page_num;
+                // $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". 
+                //  "LIMIT " . $offset . "," . $page_num;
                 $result = $conn->query($sql);
                 if($result == false) {
                     echo "DB 查询失败";
@@ -126,9 +126,8 @@
     <div class="panel-action">
         <a class="btn btn-primary" href="store_manager.html" role="button">新增单据</a>
         <a class="btn btn-primary go-token" href="javascript:;" style="margin-left: 10px" role="button">生成票据</a>
-        <a class="btn btn-primary del-items" href="javascript:;" style="margin-left: 10px" role="button">删除选中</a>
-        <!-- /*<a class="btn btn-primary" href="summary.html" style="margin-left: 10px" role="button">展示汇总数据</a>*/ -->
         <a class="btn btn-primary" href="summary.html" style="margin-left: 10px" role="button">展示汇总数据</a>
+                <a class="btn btn-primary del-items" href="javascript:;" style="margin-left: 10px" role="button">删除选中</a>
 	</div>
 	<script>
 		window.servData = {

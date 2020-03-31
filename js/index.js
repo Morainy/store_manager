@@ -21,6 +21,10 @@
     }
 
     function delItems(arr, success) {
+        var con = confirm("确认删除选中项吗？");
+        if(con == false) {
+            return;
+        }
         $.ajax({
             url: '/store_manager/delete_item.php',
             method: 'POST',
