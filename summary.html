@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<title>汇总数据</title>
+	<link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.store-form {
+			width: 475px;
+			margin: 0 auto;
+		}
+		.title {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<legend class="title">汇总数据</legend>
+		<div class="form-group">
+			<!-- <label for="record_type" class="col-sm-4 control-label">产品名称：</label>
+			<div class="col-sm-8">
+				<select class="form-control" name="record_type">
+					<option value="1">入库</option>
+					<option value="2">出库</option>
+				</select>
+			</div> -->
+			<table class="table panel-table my-table">
+				<thead>
+            <tr>
+                <th>产品名称</th>
+                <th>进库数量</th>
+                <th>出库数量</th>
+                <th>剩余数量</th>
+            </tr>
+            <tbody>
+
+            </tbody>
+        </thead>
+			</table>
+		</div>
+<script src="lib/jquery-3.4.1.min.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="lib/tmpl.js"></script>
+<script src="lib/jquery.pagination.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/summary.js"></script>
+</body>
+</html>

@@ -127,6 +127,8 @@
         <a class="btn btn-primary" href="store_manager.html" role="button">新增单据</a>
         <a class="btn btn-primary go-token" href="javascript:;" style="margin-left: 10px" role="button">生成票据</a>
         <a class="btn btn-primary del-items" href="javascript:;" style="margin-left: 10px" role="button">删除选中</a>
+        <!-- /*<a class="btn btn-primary" href="summary.html" style="margin-left: 10px" role="button">展示汇总数据</a>*/ -->
+        <a class="btn btn-primary" href="summary.html" style="margin-left: 10px" role="button">展示汇总数据</a>
 	</div>
 	<script>
 		window.servData = {
