@@ -20,6 +20,24 @@
         }, 300)
     }
 
+    function delItems(arr, success) {
+        $.ajax({
+            url: '/store_manager/delete_item.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({id: arr}),
+            dataType: 'json',
+            success: function(data) {
+                if (data.ret == 0) {
+                    success && success();
+                    alert("删除成功");
+                } else {
+                    alert("删除失败");
+                }
+            }
+        })
+    }
+
     function rendPageSize (size) {
         $pageSize.find('button .count').text(size)
     }
@@ -44,6 +62,25 @@
                 return
             }
             openToken()
+        })
+        $('.del-items').on('click', function() {
+            var selected = $('.panel-table tr :checkbox:checked');
+
+            if (!selected.length) {
+                alert('还未选中任何数据！')
+                return
+            }
+
+            var arr = [];
+            selected.each(function(index, item) {
+                arr.push($(item).data('id'));
+            })
+            
+            delItems(arr, function() {
+                selected.each(function(index, item) {
+                    $(item).parents('tr').remove();
+                });
+            });
         })
     }
 

@@ -73,8 +73,10 @@
                 	$offset = $_GET["page"] * $page_num;
                 }
                 
+                // $sql = "SELECT * FROM " . $STORE_TABLE . " WHERE status = '1' ORDER BY ctime DESC ". 
+                // 	"LIMIT " . $offset . "," . $page_num;
                 $sql = "SELECT * FROM " . $STORE_TABLE . " ORDER BY ctime DESC ". 
-                	"LIMIT " . $offset . "," . $page_num;
+                 "LIMIT " . $offset . "," . $page_num;
                 $result = $conn->query($sql);
                 if($result == false) {
                     echo "DB 查询失败";
@@ -100,7 +102,7 @@
                         ."</td><td>";
                     echo $record;
                     array_push($arr, $row);
-                    echo "<label><input type='checkbox'></label> </td><tr>";
+                    echo "<label><input type='checkbox' data-id='".$row["product_id"]."'></label> </td><tr>";
                 }
                ?>
         </tbody>
@@ -124,6 +126,7 @@
     <div class="panel-action">
         <a class="btn btn-primary" href="store_manager.html" role="button">新增单据</a>
         <a class="btn btn-primary go-token" href="javascript:;" style="margin-left: 10px" role="button">生成票据</a>
+        <a class="btn btn-primary del-items" href="javascript:;" style="margin-left: 10px" role="button">删除选中</a>
 	</div>
 	<script>
 		window.servData = {
