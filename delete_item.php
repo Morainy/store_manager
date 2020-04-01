@@ -31,4 +31,5 @@
     	$json_ret = '{"ret": 0}';
     	echo $json_ret;
     }
+    $conn->close();
 ?>

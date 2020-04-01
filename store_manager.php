@@ -19,4 +19,5 @@
     	// echo "录入成功". $sql;
     	echo "<script charset='utf-8'>alert('录入成功');window.location.href = 'index.php'</script>";
     }
+    $conn->close();
 ?>

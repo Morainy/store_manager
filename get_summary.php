@@ -32,5 +32,6 @@
     		$res[$key1] ["out_num"] = $arr_out[$key1]["sum(quantity)"];
     	}
     }
+    $conn->close();
     echo json_encode($res);
 ?>

@@ -104,6 +104,7 @@
                     array_push($arr, $row);
                     echo "<label><input type='checkbox' data-id='".$row["product_id"]."'></label> </td><tr>";
                 }
+                $conn->close();
                ?>
         </tbody>
     </table>
