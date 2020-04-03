@@ -10,14 +10,14 @@
             <td><%= item.out_price %></td>
             <td><%= item.quantity_sum %></td>
             <% if (index === 0) { %>
-                <td rowspan="<% data.length %>" ><%= sum %></td>
+                <td rowspan="<%= arr.length %>" ><%= sum %></td>
             <% } %>
             <td><%= item.memo %></td>
         </tr>
     <% }); %>`;
     
     function render(arr) {
-        var sum = data.reduce((total, curr) => total + curr, 0);
+        var sum = arr.reduce((total, {quantity_sum}) => total + quantity_sum, 0);
         var html = win.tmpl(template, {
             arr,
             sum
