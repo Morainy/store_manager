@@ -41,7 +41,7 @@
         }
 
         .footer {
-            font-size: 12px;
+            font-size: 20px;
         }
 
         .footer .content {
@@ -51,6 +51,7 @@
         .footer .content .row {
             display: flex;
             justify-content: space-between;
+            /*width: 330px;*/
         }
     </style>
 </head>
@@ -70,7 +71,7 @@
             tmp_arr["quantity"] = select_data[index]["quantity"];
             tmp_arr["out_price"] = select_data[index]["out_price"];
             tmp_arr["quantity_sum"] = select_data[index]["quantity"] * select_data[index]["out_price"];
-            tmp_arr["buyer"] = select_data[index]["buyer"];
+            // tmp_arr["buyer"] = select_data[index]["buyer"];
             tmp_arr["memo"] = select_data[index]["memo"];
             goodsTxtArr.push(tmp_arr);
         }
@@ -97,15 +98,15 @@
                 <td>数量</td>
                 <td>单价</td>
                 <td>金额</td>
-                <td>客户方</td>
+                <td>合计</td>
                 <td>备注</td>
             </tr>
         </table>
         <div class="footer">
             <div class="content">
-                <div class="row">
-                    <span>客户名称：</span>
-                    <span>电话：</span>
+                <div class="row" width:"600px">
+                    <span>客户名称：<input type="text" style="width:150px;height:20px" placeholder=""></span>
+                    <span>电话：<input type="text" style="width:150px;height:20px" placeholder=""></span>
                 </div class="row">
                 <div style="margin-top: 5px;">
                     <span>客户签字：</span>
